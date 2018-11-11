@@ -1,3 +1,7 @@
+from execution_logger import ExecutionLogger
+
+# O(2^n)
+
 class KnapsackBruteForce:
   def __init__(self, n, weight, profit, max_weight):
     self.n = n
@@ -31,9 +35,5 @@ def list_reader(file_name):
 weight = list_reader('datasets/p08_w.txt')
 profit = list_reader('datasets/p08_p.txt')
 max_weight = int(open('datasets/p08_c.txt').read())
-
 kbf = KnapsackBruteForce(len(weight), weight, profit, max_weight)
-kbf.run()
-print(kbf.best_value)
-print(kbf.s)
-print(kbf.total_weight)
+ExecutionLogger().run(kbf)
