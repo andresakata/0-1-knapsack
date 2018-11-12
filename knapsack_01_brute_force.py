@@ -32,8 +32,8 @@ def list_reader(file_name):
   file.remove('')
   return list(map(int, file))
 
-weight = list_reader('datasets/p08_w.txt')
-profit = list_reader('datasets/p08_p.txt')
-max_weight = int(open('datasets/p08_c.txt').read())
+weight = list_reader('datasets/c09_w.txt')
+profit = list_reader('datasets/c09_p.txt')
+max_weight = int(open('datasets/c09_c.txt').read())
 kbf = KnapsackBruteForce(len(weight), weight, profit, max_weight)
 ExecutionLogger().run(kbf)
