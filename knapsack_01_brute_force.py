@@ -16,17 +16,17 @@ class KnapsackBruteForce:
     self.s = []
     self.solve(self.n - 1, self.s, 0, 0)
 
-  def solve(self, n, s, current_weight, current_value):
-    if n == -1 and current_weight <= self.max_weight and current_value > self.best_value:
-      self.best_value = current_value
-      self.total_weight = current_weight
+  def solve(self, n, s, current_w, current_v):
+    if n == -1 and current_w <= self.max_weight and current_v > self.best_value:
+      self.best_value = current_v
+      self.total_weight = current_w
       self.s = s.copy()
 
     if n == -1:
       return
 
-    self.solve(n - 1, [0] + s, current_weight, current_value)
-    self.solve(n - 1, [1] + s, current_weight + self.weight[n], current_value + self.profit[n])
+    self.solve(n - 1, [0] + s, current_w, current_v)
+    self.solve(n - 1, [1] + s, current_w + self.weight[n], current_v + self.profit[n])
 
 dataset = DatasetReader().read('p08')
 kbf = KnapsackBruteForce(len(dataset[0]), dataset[0], dataset[1], dataset[2])
