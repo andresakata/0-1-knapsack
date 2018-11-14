@@ -14,7 +14,7 @@ class KnapsackGreedy:
     self.total_weight = 0
     self.s = []
 
-    for index in range(0, self.n - 1):
+    for index in range(0, self.n):
       self.s.append(0)
 
     for item in self.ratio:
@@ -26,7 +26,7 @@ class KnapsackGreedy:
   def build_ratio_list(self):
     self.ratio = []
 
-    for index in range(0, self.n - 1):
+    for index in range(0, self.n):
       self.ratio.append({
         "index": index,
         "ratio": self.profit[index] / self.weight[index]
@@ -37,6 +37,6 @@ class KnapsackGreedy:
 
     self.ratio = sorted(self.ratio, key=ratio_value)
 
-dataset = DatasetReader().read('p08')
+dataset = DatasetReader().read('c09')
 kg = KnapsackGreedy(len(dataset[0]), dataset[0], dataset[1], dataset[2])
 ExecutionLogger().run(kg)
