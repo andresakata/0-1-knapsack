@@ -11,3 +11,9 @@ Os datasets `p01`, `p07` e `p08` foram copiados [desse endereço](https://people
 - `p08`: 24 elementos
 - `c08`: 28 elementos
 - `c09`: 30 elementos
+
+## Algoritmos
+
+- `KnapsackBruteForce`: Força bruta simples
+- `KnapsackBruteForceOpt`: Força bruta com otimização
+- `KnapsackGreedy`: Algorítmo guloso (aproximação)
