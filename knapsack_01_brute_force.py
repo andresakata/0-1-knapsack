@@ -1,4 +1,5 @@
 from execution_logger import ExecutionLogger
+from dataset_reader import DatasetReader
 
 # O(2^n)
 
@@ -25,15 +26,8 @@ class KnapsackBruteForce:
       return
 
     self.solve(n - 1, [0] + s, current_weight, current_value)
-    self.solve(n - 1, [1] + s, current_weight + weight[n], current_value + profit[n])
+    self.solve(n - 1, [1] + s, current_weight + self.weight[n], current_value + self.profit[n])
 
-def list_reader(file_name):
-  file = open(file_name).read().split('\n')
-  file.remove('')
-  return list(map(int, file))
-
-weight = list_reader('datasets/c09_w.txt')
-profit = list_reader('datasets/c09_p.txt')
-max_weight = int(open('datasets/c09_c.txt').read())
-kbf = KnapsackBruteForce(len(weight), weight, profit, max_weight)
+dataset = DatasetReader().read('p08')
+kbf = KnapsackBruteForce(len(dataset[0]), dataset[0], dataset[1], dataset[2])
 ExecutionLogger().run(kbf)
