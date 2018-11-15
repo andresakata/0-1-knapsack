@@ -37,6 +37,6 @@ class KnapsackGreedy:
 
     self.ratio = sorted(self.ratio, key=ratio_value)
 
-dataset = DatasetReader().read('c09')
+dataset = DatasetReader().read('c11')
 kg = KnapsackGreedy(len(dataset[0]), dataset[0], dataset[1], dataset[2])
 ExecutionLogger().run(kg)
