@@ -19,3 +19,4 @@ Os datasets `p01`, `p07` e `p08` foram copiados [desse endereço](https://people
 - `KnapsackBruteForce`: Força bruta simples
 - `KnapsackBruteForceOpt`: Força bruta (com pequena otimização)
 - `KnapsackGreedy`: Algorítmo guloso (aproximação)
+- `KnapsackGeneticAlgorithm`: Algorítmo Genético (aproximação)
