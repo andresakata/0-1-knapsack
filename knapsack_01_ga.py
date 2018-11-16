@@ -4,7 +4,7 @@ import random
 from operator import itemgetter
 
 # Static position
-nNUM_GENERATION = 2000
+nNUM_GENERATION = 1000
 nNUM_TEST = 100
 
 class KnapsackGeneticAlgorithm:
@@ -177,6 +177,6 @@ class KnapsackGeneticAlgorithm:
 
     return aNewPopulation
 
-dataset = DatasetReader().read('c11')
+dataset = DatasetReader().read('p08')
 kbf = KnapsackGeneticAlgorithm(len(dataset[0]), dataset[0], dataset[1], dataset[2])
 ExecutionLogger().run(kbf)
