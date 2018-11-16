@@ -4,7 +4,7 @@ import random
 from operator import itemgetter
 
 # Static position
-nNUM_GENERATION = 1000
+nNUM_GENERATION = 2000
 nNUM_TEST = 100
 
 class KnapsackGeneticAlgorithm:
@@ -84,7 +84,7 @@ class KnapsackGeneticAlgorithm:
         aEvalueteIndividual.append([cIndividual, aTmp[0], aTmp[1], aTmp[2]])
 
     # Ordena os elementos pelo valor
-    aEvalueteIndividual = sorted(aEvalueteIndividual, key=itemgetter(3), reverse=True)
+    aEvalueteIndividual = sorted(aEvalueteIndividual, key=itemgetter(2), reverse=True)
 
     # Busca os melhores elementos verificando o peso
     for aIndividual in aEvalueteIndividual:
@@ -110,7 +110,7 @@ class KnapsackGeneticAlgorithm:
     cFather2 = aBestIndividual[1]
 
     # Define um cromossomo aleatório de fixação
-    nFixChromo = self.n // 2#random.randint(1,self.n)
+    nFixChromo = int(self.n * random.random())
 
     # Fixa os cromossomos pais
     cChromoF1 = cFather1[:nFixChromo]
@@ -177,6 +177,6 @@ class KnapsackGeneticAlgorithm:
 
     return aNewPopulation
 
-dataset = DatasetReader().read('p08')
+dataset = DatasetReader().read('c11')
 kbf = KnapsackGeneticAlgorithm(len(dataset[0]), dataset[0], dataset[1], dataset[2])
 ExecutionLogger().run(kbf)
