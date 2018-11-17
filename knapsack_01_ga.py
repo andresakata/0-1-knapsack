@@ -177,6 +177,6 @@ class KnapsackGeneticAlgorithm:
 
     return aNewPopulation
 
-dataset = DatasetReader().read('p08')
+dataset = DatasetReader().read('c11')
 kbf = KnapsackGeneticAlgorithm(len(dataset[0]), dataset[0], dataset[1], dataset[2])
 ExecutionLogger().run(kbf)
