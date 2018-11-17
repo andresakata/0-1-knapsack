@@ -3,13 +3,11 @@ from dataset_reader import DatasetReader
 import random
 from operator import itemgetter
 
-# Static position
-nNUM_GENERATION = 1000
-nNUM_TEST = 100
-
 class KnapsackGeneticAlgorithm:
   def __init__(self, n, weight, profit, max_weight):
     self.n = n
+    self.nNUM_GENERATION = 50 * self.n
+    self.nNUM_TEST = 5 * self.n
     self.weight = weight
     self.profit = profit
     self.max_weight = max_weight
@@ -24,16 +22,29 @@ class KnapsackGeneticAlgorithm:
 
     nTest = 0
 
-    while nTest <= nNUM_TEST:
+    while nTest <= self.nNUM_TEST:
         nCnt = 0
+        nHaventChange = 0
+
         #Determina os valores dos primeiros individuos
         aGroupIndividual = [self.aleatory_population(n),self.aleatory_population(n),self.aleatory_population(n)]
-        #print(aGroupIndividual)
+
+        previousIndividual = ""
+
         #Determina quantas gerações irá executar
-        while nCnt <= nNUM_GENERATION:
+        while nCnt <= self.nNUM_GENERATION:
             aBestIndividual = self.fitness(aGroupIndividual)
             aGroupIndividual = self.crossover(aBestIndividual)
             nCnt += 1
+
+            #Controla a quantidade de vezes em que não houve alteração
+            if aBestIndividual[0] == previousIndividual:
+                nHaventChange += 1
+            else:
+                nHaventChange = 0
+            previousIndividual = aBestIndividual[0]
+            if nHaventChange >= (self.nNUM_GENERATION // 4):
+                break
 
         # Executa um último fitness para avaliar os melhores individuos
         aOrderIndividual = self.fitness(aGroupIndividual, True)
